@@ -61,10 +61,14 @@ export default function AssignmentEditor() {
                 <br />
 
                 <tr>
-                    <td align="right" valign="top">
+                    <td></td>
+                    <td>
                         <label htmlFor="wd-text-entry">Online Entry Options</label><br />
                     </td>
+                </tr>
 
+                <tr>
+                    <td></td>
                     <td>
                         <input type="checkbox" name="check-entry" id="wd-text-entry" />
                         <label htmlFor="wd-text-entry">Text Entry</label><br />
@@ -79,7 +83,7 @@ export default function AssignmentEditor() {
                         <label htmlFor="wd-student-annotation">Student Annotation</label><br />
 
                         <input type="checkbox" name="check-entry" id="wd-file-upload" />
-                        <label htmlFor="wd-file-upload">File Upload</label><br />
+                        <label htmlFor="wd-file-upload">File Upload</label>
                     </td>
                 </tr>
                 <br />
@@ -138,8 +142,9 @@ export default function AssignmentEditor() {
             </table>
 
             <hr />
+            <button>Cancel</button>&nbsp;&nbsp;<button>Save</button>
 
-            <table>
+            {/* <table>
                 <tr>
                     <td align="right">
                         <button>Cancel</button>
@@ -147,7 +152,7 @@ export default function AssignmentEditor() {
                         <button>Save</button>
                     </td>
                 </tr>
-            </table>
+            </table> */}
         </div>
     );
 }
