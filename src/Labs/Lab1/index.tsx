@@ -12,11 +12,6 @@ export default function Lab1() {
                 <p id="wd-p-1">
                     This is a paragraph. We often separate a long set of sentences with vertical spaces to make the text easier to read. Browsers ignore vertical white spaces and render all the text as one single set of sentences. To force the browser to add vertical spacing, wrap the paragraphs you want to separate with the paragraph tag
                 </p>
-            </div>
-
-            <div id="wd-p-tag">
-                <h4>Paragraph Tag</h4>
-                <p id="wd-p-1"> ... </p>
                 <p id="wd-p-2">
                     This is the first paragraph. The paragraph tag is used to format
                     vertical gaps between long pieces of text like this one.
@@ -182,6 +177,31 @@ export default function Lab1() {
                     <label htmlFor="wd-text-fields-last-name">Last name:</label>
                     <input type="text" id="wd-text-fields-last-name" placeholder="Doe"
                         value="Wonderland" title="The last name" />
+
+                    <h4>Other HTML field types</h4>
+
+                    <label htmlFor="wd-text-fields-email"> Email: </label>
+                    <input type="email"
+                        placeholder="jdoe@somewhere.com"
+                        id="wd-text-fields-email" /><br />
+
+                    <label htmlFor="wd-text-fields-salary-start"> Starting salary:
+                    </label>
+                    <input type="number"
+                        id="wd-text-fields-salary-start"
+                        placeholder="1000"
+                        value="100000" /><br />
+
+                    <label htmlFor="wd-text-fields-rating"> Rating: </label>
+                    <input type="range" id="wd-text-fields-rating"
+                        placeholder="Doe"
+                        max="5"
+                        value="4" /><br />
+
+                    <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
+                    <input type="date"
+                        id="wd-text-fields-dob"
+                        value="2000-01-21" /><br />
                 </form>
             </div>
 
@@ -251,38 +271,12 @@ export default function Lab1() {
                 <option value="FANTASY">Fantasy</option>
             </select>
 
-            <h4>Other HTML field types</h4>
-
-            <label htmlFor="wd-text-fields-email"> Email: </label>
-            <input type="email"
-                placeholder="jdoe@somewhere.com"
-                id="wd-text-fields-email" /><br />
-
-            <label htmlFor="wd-text-fields-salary-start"> Starting salary:
-            </label>
-            <input type="number"
-                id="wd-text-fields-salary-start"
-                placeholder="1000"
-                value="100000" /><br />
-
-            <label htmlFor="wd-text-fields-rating"> Rating: </label>
-            <input type="range" id="wd-text-fields-rating"
-                placeholder="Doe"
-                max="5"
-                value="4" /><br />
-
-            <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
-            <input type="date"
-                id="wd-text-fields-dob"
-                value="2000-01-21" /><br />
-
             <h4>Anchor tag</h4>
-            Please 
+            Please
             <a id="wd-lipsum" href="https://www.lipsum.com"> click here</a>
             to get dummy text<br />
-
-
-
+            Code Repository on
+            <a id="wd-github" href="https://github.com/shreycshah/kanbas-react-web-app"> GitHub</a>
 
         </div>
     );
