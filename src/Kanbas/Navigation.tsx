@@ -4,7 +4,7 @@ import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 export default function KanbasNavigation() {
-  const textStyle = {fontSize:'18px'}
+  const textStyle = {fontSize:'17px'}
   return (
     <div id="wd-kanbas-navigation" style={{ width: 105 }}
       className="list-group rounded-0 position-fixed
