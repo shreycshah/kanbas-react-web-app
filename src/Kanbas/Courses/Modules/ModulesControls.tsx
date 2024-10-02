@@ -5,10 +5,16 @@ import React from 'react';
 export default function ModulesControls() {
   return (
     <div id="wd-modules-controls" className="d-flex justify-content-end align-items-center gap-2 mb-2">
-      {/* Add Module Button */}
-      <button id="wd-add-module-btn" className="btn btn-sm btn-danger d-flex align-items-center">
-        <FaPlus className="me-2" style={{ position: "relative", bottom: "1px" }} />
-        Module
+
+      {/* Collapse All Button */}
+      <button id="wd-collapse-all" className="btn btn-sm btn-secondary d-flex align-items-center">
+        Collapse All
+      </button>
+
+
+      {/* View Progress Button */}
+      <button id="wd-view-progress" className="btn btn-sm btn-secondary d-flex align-items-center">
+        View Progress
       </button>
 
       {/* Publish All Dropdown */}
@@ -45,15 +51,12 @@ export default function ModulesControls() {
         </ul>
       </div>
 
-      {/* Collapse All Button */}
-      <button id="wd-collapse-all" className="btn btn-sm btn-warning d-flex align-items-center">
-        Collapse All
+      {/* Add Module Button */}
+      <button id="wd-add-module-btn" className="btn btn-sm btn-danger d-flex align-items-center">
+        <FaPlus className="me-2" style={{ position: "relative", bottom: "1px" }} />
+        Module
       </button>
 
-      {/* View Progress Button */}
-      <button id="wd-view-progress" className="btn btn-sm btn-info d-flex align-items-center">
-        View Progress
-      </button>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import AssignmentControl from "./AssignmentControl";
 import { BsGripVertical } from "react-icons/bs";
 import { FaBook } from 'react-icons/fa';
+import { GoTriangleDown } from "react-icons/go";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 export default function Assignments() {
@@ -10,7 +11,7 @@ export default function Assignments() {
             <AssignmentControl />
 
             <div className="wd-assignments-title p-3 ps-2 bg-secondary" style={{ color: 'black', border: '1px solid black' }}>
-                <BsGripVertical className="me-2 fs-3" />
+                <BsGripVertical className="me-2 fs-3" /> <GoTriangleDown />
                 <strong>ASSIGNMENTS</strong><AssignmentControlButtons /></div>
             <ul className="wd-assignments-list list-group rounded-0">
                 <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
