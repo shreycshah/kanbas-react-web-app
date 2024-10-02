@@ -1,49 +1,62 @@
 import React from "react";
+import AssignmentControl from "./AssignmentControl";
+import { BsGripVertical } from "react-icons/bs";
+import { FaBook } from 'react-icons/fa';
+import LessonControlButtons from "../Modules/LessonControlButtons";
+import AssignmentControlButtons from "./AssignmentControlButtons";
 export default function Assignments() {
     return (
-        <div id="wd-assignments">
-            <input id="wd-search-assignment"
-                placeholder="Search for Assignments" />
-            <button id="wd-add-assignment-group">+ Group</button>
-            <button id="wd-add-assignment">+ Assignment</button>
+        <div>
+            <AssignmentControl />
 
-
-            <h3 id="wd-assignments-title">
-                ASSIGNMENTS 40% of Total <button>+</button>
-            </h3>
-
-            <ul id="wd-assignment-list">
-                <li className="wd-assignment-list-item">
-                    <a className="wd-assignment-link"
-                        href="#/Kanbas/Courses/1234/Assignments/1">
-                        A1 - ENV + HTML
-                    </a>
-                    <br />
-                    <span>Multiple Modules | <strong>Not available until</strong> May 6 at 12:00am | </span>
-                    <br />
-                    <span><strong>Due</strong> May 13 at 11:59pm | 100 pts </span>
+            <div className="wd-assignments-title p-3 ps-2 bg-secondary" style={{ color: 'black', border: '1px solid black' }}>
+                <BsGripVertical className="me-2 fs-3" />
+                <strong>ASSIGNMENTS</strong><AssignmentControlButtons /></div>
+            <ul className="wd-assignments-list list-group rounded-0">
+                <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
+                    <BsGripVertical className="text-muted me-2 fs-5" /> <FaBook style={{ marginRight: 10, color: 'green' }} />
+                    <div className="flex-grow-1">
+                        <a href="#/Kanbas/Courses/1234/Assignments/1" className="stretched-link" style={{ color: 'black' }}>
+                            <strong>A1</strong>
+                        </a>
+                        <div className="small">
+                            <span style={{ color: 'red' }}>Multiple Modules</span> | <strong>Not available until</strong> May 6 at 12:00am
+                        </div>
+                        <div className="small">
+                            <strong>Due</strong> May 13 at 11:59pm | 100 pts
+                        </div>
+                    </div>
+                    <LessonControlButtons />
                 </li>
-
-                <li className="wd-assignment-list-item">
-                    <a className="wd-assignment-link"
-                        href="#/Kanbas/Courses/1234/Assignments/2">
-                        A2 - CSS + BOOTSTRAP
-                    </a>
-                    <br />
-                    <span>Multiple Modules | <strong>Not available until</strong> May 13 at 12:00am | </span>
-                    <br />
-                    <span><strong>Due</strong> May 20 at 11:59pm | 100 pts </span>
+                <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
+                    <BsGripVertical className="text-muted me-2 fs-5" /> <FaBook style={{ marginRight: 10, color: 'green' }} />
+                    <div className="flex-grow-1">
+                        <a href="#/Kanbas/Courses/1234/Assignments/1" className="stretched-link" style={{ color: 'black' }}>
+                            <strong>A2</strong>
+                        </a>
+                        <div className="small">
+                            <span style={{ color: 'red' }}>Multiple Modules</span> | <strong>Not available until</strong> May 13 at 12:00am
+                        </div>
+                        <div className="small">
+                            <strong>Due</strong> May 20 at 11:59pm | 100 pts
+                        </div>
+                    </div>
+                    <LessonControlButtons />
                 </li>
-
-                <li className="wd-assignment-list-item">
-                    <a className="wd-assignment-link"
-                        href="#/Kanbas/Courses/1234/Assignments/3">
-                        A3 - JAVASCRIPT + REACT
-                    </a>
-                    <br />
-                    <span>Multiple Modules | <strong>Not available until</strong> May 20 at 12:00am | </span>
-                    <br />
-                    <span><strong>Due</strong> May 27 at 11:59pm | 100 pts </span>
+                <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
+                    <BsGripVertical className="text-muted me-2 fs-5" /> <FaBook style={{ marginRight: 10, color: 'green' }} />
+                    <div className="flex-grow-1">
+                        <a href="#/Kanbas/Courses/1234/Assignments/1" className="stretched-link" style={{ color: 'black' }}>
+                            <strong>A3</strong>
+                        </a>
+                        <div className="small">
+                            <span style={{ color: 'red' }}>Multiple Modules</span> | <strong>Not available until</strong> May 20 at 12:00am
+                        </div>
+                        <div className="small">
+                            <strong>Due</strong> May 27 at 11:59pm | 100 pts
+                        </div>
+                    </div>
+                    <LessonControlButtons />
                 </li>
             </ul>
 

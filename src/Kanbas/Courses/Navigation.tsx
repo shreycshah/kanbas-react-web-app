@@ -10,7 +10,7 @@ export default function CoursesNavigation() {
       <NavLink className="list-group-item" id="wd-course-quizzes-link" to="/Kanbas/Courses/1234/Assignments">Assignments</NavLink>
       <NavLink className="list-group-item" id="wd-course-assignments-link" to="/Kanbas/Courses/1234/Quizzes">Quizzes</NavLink>
       <NavLink className="list-group-item" id="wd-course-grades-link" to="/Kanbas/Courses/1234/Grades">Grades</NavLink>
-      <NavLink className="list-group-item" id="wd-course-people-link" to="/Kanbas/People">People</NavLink>
+      <NavLink className="list-group-item" id="wd-course-people-link" to="/Kanbas/Courses/1234/People">People</NavLink>
     </div>
   );
 }
