@@ -14,7 +14,7 @@ export default function Assignments() {
                 <BsGripVertical className="me-2 fs-3" /> <GoTriangleDown />
                 <strong>ASSIGNMENTS</strong><AssignmentControlButtons /></div>
             <ul className="wd-assignments-list list-group rounded-0">
-                <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
+                <li className="wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
                     <BsGripVertical className="text-muted me-2 fs-5" /> <FaBook style={{ marginRight: 10, color: 'green' }} />
                     <div className="flex-grow-1">
                         <a href="#/Kanbas/Courses/1234/Assignments/1" className="stretched-link" style={{ color: 'black' }}>
@@ -29,7 +29,7 @@ export default function Assignments() {
                     </div>
                     <LessonControlButtons />
                 </li>
-                <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
+                <li className="wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
                     <BsGripVertical className="text-muted me-2 fs-5" /> <FaBook style={{ marginRight: 10, color: 'green' }} />
                     <div className="flex-grow-1">
                         <a href="#/Kanbas/Courses/1234/Assignments/1" className="stretched-link" style={{ color: 'black' }}>
@@ -44,7 +44,7 @@ export default function Assignments() {
                     </div>
                     <LessonControlButtons />
                 </li>
-                <li className=" wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
+                <li className="wd-assignment-list-item list-group-item d-flex align-items-center" style={{ border: '1px solid black', color: 'black' }}>
                     <BsGripVertical className="text-muted me-2 fs-5" /> <FaBook style={{ marginRight: 10, color: 'green' }} />
                     <div className="flex-grow-1">
                         <a href="#/Kanbas/Courses/1234/Assignments/1" className="stretched-link" style={{ color: 'black' }}>

@@ -14,7 +14,7 @@ export default function Modules() {
             <BsGripVertical className="me-2 fs-3" />
             Week 1 <ModuleControlButtons /></div>
           <ul className="wd-lessons list-group rounded-0">
-            <li className="wd-lesson list-group-item p-3 ps-1" style={{ color: 'black', border: '1px black' }}>
+            <li className="wd-lesson list-group-item p-3 ps-1" style={{ color: 'black', border: '1px solid black' }}>
               <BsGripVertical className="me-2 fs-3" />
               LEARNING OBJECTIVES<LessonControlButtons /></li>
             <li className="wd-lesson list-group-item p-3 ps-1" style={{ color: 'black', border: '1px solid black' }}>
