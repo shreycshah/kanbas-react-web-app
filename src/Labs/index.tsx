@@ -6,8 +6,8 @@ import Lab3 from "./Lab3";
 export default function Labs() {
   return (
     <div>
-      <p><strong>Shrey Chirag Shah</strong></p> 
-      <p>Section 01</p>
+      <h1>Shrey Chirag Shah</h1> 
+      <h1>Section 01</h1>
       <h1>Labs</h1>
       <TOC />
       <Routes>
