@@ -25,39 +25,54 @@ import Spreading from "./Spreading";
 import Destructing from "./Destructing";
 import FunctionDestructing from "./FunctionDestructing";
 import DestructingImports from "./DestructingImports";
+import Classes from "./Classes";
+import Styles from "./Styles";
+import Add from "./Add";
+import Square from "./Square";
+import Highlight from "./Highlight";
+import AddPathParameters from "./AddPathParameters";
 
 export default function Lab3() {
-    return (
-      <div>
-        <h2>Lab 3</h2>
-        <VariablesAndConstants />
-        <VariableTypes />
-        <BooleanVariables />
-        <IfElse />
-        <TernaryOperator />
-        <ConditionalOutputIfElse />
-        <ConditionalOutputInline />
-        <LegacyFunctions />
-        <ArrowFunctions />
-        <ImpliedReturn />
-        <TemplateLiterals />
-        <SimpleArrays />
-        <ArrayIndexAndLength />
-        <AddingAndRemovingToFromArrays />
-        <ForLoops />
-        <MapFunction />
-        <FindFunction />
-        <FindIndex />
-        <FilterFunction />
-        <JsonStringify />
-        <House />
-        <TodoItem />
-        <TodoList />
-        <Spreading />
-        <Destructing />
-        <FunctionDestructing />
-        <DestructingImports />
-      </div>
-    );
-  }
-  
+  console.log('Hello World!');
+  return (
+    <div id="wd-lab3">
+      <h2>Lab 3</h2>
+      <h3>JavaScript</h3>
+      <VariablesAndConstants />
+      <VariableTypes />
+      <BooleanVariables />
+      <IfElse />
+      <TernaryOperator />
+      <ConditionalOutputIfElse />
+      <ConditionalOutputInline />
+      <LegacyFunctions />
+      <ArrowFunctions />
+      <ImpliedReturn />
+      <TemplateLiterals />
+      <SimpleArrays />
+      <ArrayIndexAndLength />
+      <AddingAndRemovingToFromArrays />
+      <ForLoops />
+      <MapFunction />
+      <FindFunction />
+      <FindIndex />
+      <FilterFunction />
+      <JsonStringify />
+      <House />
+      <TodoItem />
+      <TodoList />
+      <Spreading />
+      <Destructing />
+      <FunctionDestructing />
+      <DestructingImports />
+      <Classes />
+      <Styles />
+      <Add a={3} b={4} />
+      <h4>Square of 4</h4>
+      <Square>4</Square>
+      <hr />
+      <Highlight>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, eum expedita assumenda officia corporis ipsam est magnam laboriosam nemo quo aliquam! Harum, possimus a! Aliquid, soluta. Perferendis tenetur facere placeat.</Highlight>
+      <AddPathParameters />
+    </div>
+  );
+}
