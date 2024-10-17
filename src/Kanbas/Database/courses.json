@@ -67,7 +67,7 @@
     },
     {
         "_id": "RS107",
-        "name": "Ancient Languages and Scripts of Middle-earth",
+        "name": "Ancient Languages",
         "number": "ME101",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -79,7 +79,7 @@
     },
     {
         "_id": "RS108",
-        "name": "Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth",
+        "name": "Wizards and Elves",
         "number": "ME102",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -91,7 +91,7 @@
     },
     {
         "_id": "RS109",
-        "name": "History and Practice of Middle-earth Magic",
+        "name": "History and its Practice",
         "number": "ME103",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -103,7 +103,7 @@
     },
     {
         "_id": "RS110",
-        "name": "Principles of Democratic Education",
+        "name": "Civics and Democracy",
         "number": "EDU201",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -114,7 +114,7 @@
     },
     {
         "_id": "RS111",
-        "name": "Philosophy of Independence and Liberation",
+        "name": "Philosophy of Independence",
         "number": "HIS301",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -125,7 +125,7 @@
     },
     {
         "_id": "RS112",
-        "name": "Innovations in Early 19th Century Education",
+        "name": "Innovations in Early 1900s Education",
         "number": "EDU303",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -136,7 +136,7 @@
     },
     {
         "_id": "RS113",
-        "name": "Foundations of Christian Ethics",
+        "name": "Christian Ethics",
         "number": "THEO101",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -148,7 +148,7 @@
     },
     {
         "_id": "RS114",
-        "name": "Early Christianity and the Apostolic Age",
+        "name": "Early Christianity",
         "number": "HIS201",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -160,7 +160,7 @@
     },
     {
         "_id": "RS115",
-        "name": "Leadership and Service in Christian Communities",
+        "name": "Leadership",
         "number": "MIN301",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -172,7 +172,7 @@
     },
     {
         "_id": "RS116",
-        "name": "Sufi Philosophy and Mystical Traditions",
+        "name": "Sufi Philosophy",
         "number": "ISL301",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -184,7 +184,7 @@
     },
     {
         "_id": "RS117",
-        "name": "Ethical Wisdom in Islamic Teachings",
+        "name": "Islamic Teachings",
         "number": "ISL202",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -196,7 +196,7 @@
     },
     {
         "_id": "RS118",
-        "name": "Understanding the Unseen: Islamic Esotericism",
+        "name": "Islamic Esotericism",
         "number": "ISL403",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -208,7 +208,7 @@
     },
     {
         "_id": "RS119",
-        "name": "Ancient Chinese Environmental Management",
+        "name": "Env. Management",
         "number": "ENV101",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -219,7 +219,7 @@
     },
     {
         "_id": "RS120",
-        "name": "Leadership Lessons from Chinese Mythology",
+        "name": "Chinese Mythology",
         "number": "MGT201",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
@@ -230,7 +230,7 @@
     },
     {
         "_id": "RS121",
-        "name": "Hydraulic Engineering in Ancient Civilizations",
+        "name": "Hydraulic Engineering",
         "number": "ENG303",
         "startDate": "2023-01-10",
         "endDate": "2023-05-15",
