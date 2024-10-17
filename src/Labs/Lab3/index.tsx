@@ -30,7 +30,7 @@ import Styles from "./Styles";
 import Add from "./Add";
 import Square from "./Square";
 import Highlight from "./Highlight";
-import AddPathParameters from "./AddPathParameters";
+import PathParameters from "./PathParameters";
 
 export default function Lab3() {
   console.log('Hello World!');
@@ -72,7 +72,7 @@ export default function Lab3() {
       <Square>4</Square>
       <hr />
       <Highlight>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, eum expedita assumenda officia corporis ipsam est magnam laboriosam nemo quo aliquam! Harum, possimus a! Aliquid, soluta. Perferendis tenetur facere placeat.</Highlight>
-      <AddPathParameters />
+      <PathParameters />
     </div>
   );
 }
