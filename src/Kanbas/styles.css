@@ -19,17 +19,15 @@ body * {
   border-left: 3px solid black !important;
 }
 
+/*
 .list-group-item {
   width: 100%;
-  /* Ensures that the link uses the full width of the list item */
   color: red;
-  /* Set link text color to red */
   text-decoration: none;
-  /* Removes underline from links */
   border: none;
   padding: 2px 8px;
   margin-bottom: 0;
-}
+} */
 
 .btn-secondary {
   --bs-btn-color: #000 !important;
@@ -42,9 +40,9 @@ body * {
   --bs-secondary-rgb: 199, 205, 209;
 }
 
-/* .list-group-item {
+.list-group-item {
   --bs-list-group-border-color: gray;
-} */
+} 
 
 .wd-lesson {
   border-left: 3px solid green !important;
