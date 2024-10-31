@@ -1,8 +1,12 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
 import React from 'react';
+import ModuleEditor from "./ModuleEditor";
+import { FaTrash } from "react-icons/fa";
 
-export default function ModulesControls() {
+export default function ModulesControls(
+  { moduleName, setModuleName, addModule }:
+    { moduleName: string; setModuleName: (title: string) => void; addModule: () => void; }) {
   return (
     <div id="wd-modules-controls" className="d-flex justify-content-end align-items-center gap-2 mb-2">
 
@@ -52,10 +56,13 @@ export default function ModulesControls() {
       </div>
 
       {/* Add Module Button */}
-      <button id="wd-add-module-btn" className="btn btn-sm btn-danger d-flex align-items-center">
+      <button id="wd-add-module-btn" className="btn btn-sm btn-danger d-flex align-items-center"
+        data-bs-toggle="modal" data-bs-target="#wd-add-module-dialog">
         <FaPlus className="me-2" style={{ position: "relative", bottom: "1px" }} />
         Module
       </button>
+      <ModuleEditor dialogTitle="Add Module" moduleName={moduleName}
+        setModuleName={setModuleName} addModule={addModule} />
 
     </div>
   );
