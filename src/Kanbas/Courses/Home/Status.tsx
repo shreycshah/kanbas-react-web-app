@@ -8,7 +8,7 @@ export default function CourseStatus() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   return (
     <div id="wd-course-status" style={{ width: "300px" }}>
-      {currentUser.role == "FACULTY" && (
+      {currentUser && currentUser?.role == "FACULTY" && (
         <>
           <h2>Course Status</h2>
           <div className="d-flex">

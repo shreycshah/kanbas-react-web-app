@@ -17,7 +17,7 @@ export default function ModulesControls(
         Collapse All
       </button>
 
-      {currentUser.role == "FACULTY" && (
+      {currentUser && currentUser?.role == "FACULTY" && (
         <>
           {/* View Progress Button */}
           <button id="wd-view-progress" className="btn btn-sm btn-secondary d-flex align-items-center">

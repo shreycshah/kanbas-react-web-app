@@ -1,8 +1,23 @@
-import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { FaPlus } from "react-icons/fa6";
+import { useParams, useNavigate } from 'react-router-dom';
 
 export default function AssignmentControl() {
+    const { cid } = useParams();
+    const navigate = useNavigate();
+
+    function generateUniqueId() {
+        const now = new Date();
+        const datePart = now.toISOString().replace(/[-:.TZ]/g, ''); // Removes dashes, colons, periods, 'T', 'Z'
+        const randomPart = Math.floor(Math.random() * 10000); // Generates a random 6-digit number
+        return `${datePart}${randomPart}`;
+    }
+
+    const handleAdd = () => {
+        const newId = generateUniqueId();
+        navigate(`/Kanbas/Courses/${cid}/Assignments/${newId}`);
+    }
+
     return (
         <div className="d-flex justify-content-between align-items-center mb-2" style={{ width: '100%' }}>
             {/* Search Bar with Icon */}
@@ -20,7 +35,7 @@ export default function AssignmentControl() {
                 </button>
 
                 {/* Add Assignment Button */}
-                <button className="btn btn-sm btn-danger d-flex align-items-center">
+                <button className="btn btn-sm btn-danger d-flex align-items-center" onClick={handleAdd}>
                     <FaPlus className="me-2" />Assignment
                 </button>
             </div>
