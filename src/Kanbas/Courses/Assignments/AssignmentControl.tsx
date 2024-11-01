@@ -1,6 +1,7 @@
 import { BsSearch } from 'react-icons/bs';
 import { FaPlus } from "react-icons/fa6";
 import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 export default function AssignmentControl() {
     const { cid } = useParams();
@@ -18,6 +19,8 @@ export default function AssignmentControl() {
         navigate(`/Kanbas/Courses/${cid}/Assignments/${newId}`);
     }
 
+    const { currentUser } = useSelector((state: any) => state.accountReducer);
+
     return (
         <div className="d-flex justify-content-between align-items-center mb-2" style={{ width: '100%' }}>
             {/* Search Bar with Icon */}
@@ -28,17 +31,19 @@ export default function AssignmentControl() {
                 <input type="search" className="form-control" placeholder="Search..." />
             </div>
 
-            <div className="buttons d-flex gap-2">
-                {/* Add Group Button */}
-                <button className="btn btn-sm btn-secondary d-flex align-items-center">
-                    <FaPlus className="me-2" /> Group
-                </button>
+            {currentUser && currentUser?.role == "FACULTY" && (
+                <div className="buttons d-flex gap-2">
+                    {/* Add Group Button */}
+                    <button className="btn btn-sm btn-secondary d-flex align-items-center">
+                        <FaPlus className="me-2" /> Group
+                    </button>
 
-                {/* Add Assignment Button */}
-                <button className="btn btn-sm btn-danger d-flex align-items-center" onClick={handleAdd}>
-                    <FaPlus className="me-2" />Assignment
-                </button>
-            </div>
+                    {/* Add Assignment Button */}
+                    <button className="btn btn-sm btn-danger d-flex align-items-center" onClick={handleAdd}>
+                        <FaPlus className="me-2" />Assignment
+                    </button>
+                </div>
+            )}
 
         </div>
     );
