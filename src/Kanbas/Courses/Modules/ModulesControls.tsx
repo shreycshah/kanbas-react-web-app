@@ -2,7 +2,6 @@ import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
 import React from 'react';
 import ModuleEditor from "./ModuleEditor";
-import { FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 export default function ModulesControls(

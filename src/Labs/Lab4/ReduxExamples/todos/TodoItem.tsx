@@ -8,8 +8,10 @@ export default function TodoItem({ todo }: {
   return (
     <li key={todo.id} className="list-group-item">
       <button onClick={() => dispatch(deleteTodo(todo.id))}
+      className="btn btn-danger"
         id="wd-delete-todo-click"> Delete </button>
       <button onClick={() => dispatch(setTodo(todo))}
+      className="btn btn-warning"
         id="wd-set-todo-click"> Edit </button>
       {todo.title}    </li>
   );

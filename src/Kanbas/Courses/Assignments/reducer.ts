@@ -18,7 +18,6 @@ const assignmentsSlice = createSlice({
                 description: assignment.description,
             };
             state.assignments = [...state.assignments, newAssignment] as any;
-            console.log(state.assignments);
         },
         deleteAssignment: (state, { payload: assignmentId }) => {
             state.assignments = state.assignments.filter(
