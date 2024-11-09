@@ -1,18 +1,81 @@
-import { useState } from 'react';
-import { FaChevronDown, FaTimes, FaCalendarAlt } from 'react-icons/fa';
-import { useParams, Link } from 'react-router-dom';
-import * as db from "../../Database"; // Import the database that holds assignments data
+import { useState, useEffect } from 'react';
+//import { FaChevronDown, FaTimes, FaCalendarAlt } from 'react-icons/fa';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { addAssignment, updateAssignment } from './reducer';
+import { useSelector, useDispatch } from "react-redux";
 
 export default function AssignmentEditor() {
-  const { cid, aid } = useParams(); // Retrieve course ID and assignment ID from the URL
-  const [selectedAssignTo, setSelectedAssignTo] = useState('Everyone');
-  const assignment = db.assignments.find(a => a._id === aid); // Find the assignment in the database
-  const onlineEntryOptions = assignment?.online_entry_option || [];
+  const { cid, aid } = useParams();
+  const assignments = useSelector((state: any) => state.assignmentReducer.assignments);
+  const assignment = assignments.find((a: any) => a._id === aid);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // Handle the case where assignment is not found (in case of invalid ID)
-  if (!assignment) {
-    return <div>Assignment not found</div>;
-  }
+  // Set up state variables with default values to avoid conditional hook calls
+  const [title, setTitle] = useState('Unititled Assignment');
+  const [description, setDescription] = useState('No description');
+  const [points, setPoints] = useState(100);
+  const [dueDate, setDueDate] = useState('');
+  const [availableFrom, setAvailableFrom] = useState('');
+  const [availableUntil, setAvailableUntil] = useState('');
+
+  // Populate state only if assignment exists, using useEffect
+  useEffect(() => {
+    if (assignment) {
+      setTitle(assignment.title);
+      setDescription(assignment.description);
+      setPoints(assignment.points);
+      setDueDate(new Date(assignment.due).toISOString().slice(0, 16));
+      setAvailableFrom(new Date(assignment.not_available_until).toISOString().slice(0, 16));
+      setAvailableUntil(new Date(assignment.not_available_until).toISOString()); // Set based on assignment if available
+    }
+  }, [assignment]);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  };
+
+  // Handle save action
+  const handleSave = () => {
+    const assignmentExists = assignments && assignments.find((a:any) => a._id === aid);
+
+    if (!assignmentExists) {
+      // Create a new assignment
+      const newAssignment = {
+        _id: aid, // Existing ID or a new unique ID
+        course : cid,
+        title,
+        description,
+        points,
+        due: formatDate(new Date(dueDate).toISOString()),
+        not_available_until: formatDate(new Date(availableFrom).toISOString()),
+        available_until: formatDate(new Date(availableFrom).toISOString()),
+      };
+      console.log(newAssignment);
+      dispatch(addAssignment(newAssignment));
+    } else {
+      // Update the existing assignment
+      const updatedAssignment = {
+        ...assignmentExists,
+        title,
+        description,
+        points,
+        due: formatDate(new Date(dueDate).toISOString()),
+        not_available_until: formatDate(new Date(availableFrom).toISOString()),
+        available_until: formatDate(new Date(availableFrom).toISOString()),
+      };
+      console.log(updatedAssignment);
+      dispatch(updateAssignment(updatedAssignment));
+    }
+    // Navigate back after save
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
+  };
+
 
   return (
     <div id="wd-assignments-editor" className="container mt-4">
@@ -20,7 +83,12 @@ export default function AssignmentEditor() {
       <div className="row mb-2">
         <div className="col">
           <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-          <input id="wd-name" value={assignment.title} className="form-control" readOnly />
+          <input
+            id="wd-name"
+            value={title}
+            className="form-control"
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
       </div>
 
@@ -33,13 +101,8 @@ export default function AssignmentEditor() {
             rows={10}
             id="wd-description"
             className="form-control"
-            defaultValue={`
-              ${assignment.description}
-              Please submit your assignment as per the instructions.
-              This assignment is worth ${assignment.points} points.
-              Due date: ${assignment.due}.
-              Available from: ${assignment.not_available_until}.
-            `}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
       </div>
@@ -50,191 +113,61 @@ export default function AssignmentEditor() {
           <label htmlFor="wd-points" className="form-label">Points</label>
         </div>
         <div className="col-md-9">
-          <input id="wd-points" value={assignment.points} className="form-control" readOnly />
+          <input
+            id="wd-points"
+            type="number"
+            value={points}
+            className="form-control"
+            onChange={(e) => setPoints(Number(e.target.value))}
+          />
         </div>
       </div>
 
-      {/* Assignment Group */}
-      <div className="row mb-2">
-        <div className="col-md-3 d-flex align-items-center justify-content-end">
-          <label htmlFor="wd-group" className="form-label">Assignment Group</label>
-        </div>
-        <div className="col-md-9">
-          <div className="input-group">
-            <select id="wd-group" className="form-control" defaultValue={assignment.assignment_group}>
-              <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-              <option value="QUIZZES">QUIZ</option>
-              <option value="PROJECT">PROJECT</option>
-              <option value="EXAM">EXAM</option>
-            </select>
-            <span className="input-group-text">
-              <FaChevronDown />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Display Grade As */}
-      <div className="row mb-2">
-        <div className="col-md-3 d-flex align-items-center justify-content-end">
-          <label htmlFor="wd-display-grade-as" className="form-label">Display Grade as</label>
-        </div>
-        <div className="col-md-9">
-          <div className="input-group">
-            <select id="wd-display-grade-as" className="form-control" defaultValue={assignment.display_grade_as}>
-              <option value="PERCENTAGE">Percentage</option>
-              <option value="GRADE">Grade</option>
-              <option value="AS IT IS">As it is</option>
-            </select>
-            <span className="input-group-text">
-              <FaChevronDown />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Submission Type */}
-      <div className="row mb-2">
-        <div className="col-md-3 d-flex align-items-center justify-content-end">
-          <label htmlFor="wd-submission-type" className="form-label">Submission Type</label>
-        </div>
-        <div className="col-md-9">
-          <div className="input-group">
-            <select id="wd-submission-type" className="form-control" defaultValue={assignment.submission_type}>
-              <option value="Online">Online</option>
-              <option value="In-Person">In-Person</option>
-              <option value="URL">Web URL</option>
-            </select>
-            <span className="input-group-text">
-              <FaChevronDown />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Online Entry Options */}
+      {/* Due Date */}
       <div className="row mb-3">
-        <div className="col-md-3">
-          {/* Empty column for alignment */}
+        <div className="col-md-3 d-flex justify-content-end">
+          <label className="form-label font-weight-bold">Due</label>
         </div>
         <div className="col-md-9">
-          <div className="border p-3" style={{ marginTop: '-15px' }}>
-            <label className="form-label">Online Entry Options</label>
-
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="wd-text-entry"
-                defaultChecked={onlineEntryOptions.includes("Text Entry")}
-              />
-              <label htmlFor="wd-text-entry" className="form-check-label">Text Entry</label>
-            </div>
-
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="wd-website-url"
-                defaultChecked={onlineEntryOptions.includes("Website URL")}
-              />
-              <label htmlFor="wd-website-url" className="form-check-label">Website URL</label>
-            </div>
-
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="wd-media-recordings"
-                defaultChecked={onlineEntryOptions.includes("Media Recordings")}
-              />
-              <label htmlFor="wd-media-recordings" className="form-check-label">Media Recordings</label>
-            </div>
-
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="wd-student-annotation"
-                defaultChecked={onlineEntryOptions.includes("Student Annotation")}
-              />
-              <label htmlFor="wd-student-annotation" className="form-check-label">Student Annotation</label>
-            </div>
-
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="wd-file-upload"
-                defaultChecked={onlineEntryOptions.includes("File Uploads")}
-              />
-              <label htmlFor="wd-file-upload" className="form-check-label">File Uploads</label>
-            </div>
-          </div>
+          <input
+            id="wd-due-date"
+            type="datetime-local"
+            value={dueDate}
+            className="form-control"
+            onChange={(e) => setDueDate(e.target.value)}
+          />
         </div>
       </div>
 
-      {/* Assign To, Due Date, and Availability */}
+      {/* Available From */}
       <div className="row mb-3">
-        <div className="col-md-3 d-flex  justify-content-end">
-          <label className="form-label">Assign</label>
+        <div className="col-md-3 d-flex justify-content-end">
+          <label className="form-label font-weight-bold">Available from</label>
         </div>
         <div className="col-md-9">
-          <div className="border p-3">
-            <div className="mb-3">
-              <label htmlFor="wd-assign-to" className="form-label font-weight-bold">Assign to</label>
-              <div className="input-group">
-                <input id="wd-assign-to" value={selectedAssignTo} className="form-control" />
-                <span className="input-group-text">
-                  <FaTimes />
-                </span>
-              </div>
-            </div>
+          <input
+            id="wd-available-from"
+            type="datetime-local"
+            value={availableFrom}
+            className="form-control"
+            onChange={(e) => setAvailableFrom(e.target.value)}
+          />
+        </div>
+      </div>
 
-            {/* Due Date */}
-            <div className="mb-3">
-              <label htmlFor="wd-due-date" className="form-label font-weight-bold">Due</label>
-              <div className="input-group">
-                <input
-                  id="wd-due-date"
-                  type="datetime-local"
-                  defaultValue={new Date(assignment.due).toISOString().slice(0, 16)}
-                  className="form-control"
-                />
-                <span className="input-group-text">
-                  <FaCalendarAlt />
-                </span>
-              </div>
-            </div>
-
-            {/* Available From */}
-            <div className="row">
-              <div className="col-md-6">
-                <label htmlFor="wd-available-from" className="form-label font-weight-bold">Available from</label>
-                <div className="input-group">
-                  <input
-                    id="wd-available-from"
-                    type="datetime-local"
-                    defaultValue={new Date(assignment.not_available_until).toISOString().slice(0, 16)}
-                    className="form-control"
-                  />
-                  <span className="input-group-text">
-                    <FaCalendarAlt /> {/* Calendar icon */}
-                  </span>
-                </div>
-              </div>
-
-              <div className="col-md-6">
-                <label htmlFor="wd-available-until" className="form-label font-weight-bold">Until</label>
-                <div className="input-group">
-                  <input id="wd-available-until" type="datetime-local" className="form-control" />
-                  <span className="input-group-text">
-                    <FaCalendarAlt /> {/* Calendar icon */}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* Available Until */}
+      <div className="row mb-3">
+        <div className="col-md-3 d-flex justify-content-end">
+          <label className="form-label font-weight-bold">Until</label>
+        </div>
+        <div className="col-md-9">
+          <input
+            id="wd-available-until"
+            type="datetime-local"
+            value={availableUntil}
+            className="form-control"
+            onChange={(e) => setAvailableUntil(e.target.value)}
+          />
         </div>
       </div>
 
@@ -245,9 +178,7 @@ export default function AssignmentEditor() {
           <Link to={`/Kanbas/Courses/${cid}/Assignments`}>
             <button className="btn btn-secondary me-2">Cancel</button>
           </Link>
-          <Link to={`/Kanbas/Courses/${cid}/Assignments`}>
-            <button className="btn btn-danger">Save</button>
-          </Link>
+          <button className="btn btn-danger" onClick={handleSave}>Save</button>
         </div>
       </div>
     </div>
