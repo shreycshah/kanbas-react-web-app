@@ -12,8 +12,17 @@ import * as userClient from "./Account/client";
 import * as courseClient from "./Courses/client";
 
 export default function Kanbas() {
+
+  const [course, setCourse] = useState<any>({
+    _id: "1234", name: "New Course", number: "New Number",
+    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
+  });
+
   const [courses, setCourses] = useState<any[]>([]);
+  const [allCourses, setAllCourses] = useState<any[]>([]);
+
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
   const fetchCourses = async () => {
     try {
       const courses = await userClient.findMyCourses();
@@ -22,15 +31,18 @@ export default function Kanbas() {
       console.error(error);
     }
   };
+  const fetchAllCourses = async () => {
+    const allCourses = await courseClient.fetchAllCourses();
+    setAllCourses(allCourses);
+  }
+
   useEffect(() => {
     fetchCourses();
+    fetchAllCourses();
   }, [currentUser]);
 
-  const [course, setCourse] = useState<any>({
-    _id: "1234", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
-  });
   const addNewCourse = async () => {
+    console.log("index.js addNewCourse:", courses);
     const newCourse = await userClient.createCourse(course);
     setCourses((courses) => [...courses, newCourse]);
     console.log("courses after adding:", courses);
@@ -65,10 +77,14 @@ export default function Kanbas() {
                 <Dashboard
                   courses={courses}
                   course={course}
+                  allCourses={allCourses}
                   setCourse={setCourse}
                   addNewCourse={addNewCourse}
                   deleteCourse={deleteCourse}
-                  updateCourse={updateCourse} />
+                  updateCourse={updateCourse}
+                  fetchCourses={fetchCourses}
+                  fetchAllCourses={fetchAllCourses}
+                   />
               </ProtectedRoute>
             } />
             <Route path="/Courses/:cid/*" element={<ProtectedRoute><Courses courses={courses} /></ProtectedRoute>} />
