@@ -19,7 +19,9 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
     (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === courseId
   );
 
+  console.log("enrollments:", enrollments);
   const coursesToDisplay = showAllCourses ? courses : courses.filter((course) => isEnrolled(course._id));
+  console.log("coursesToDisplay:", coursesToDisplay);
 
   return (
     <div id="wd-dashboard">
