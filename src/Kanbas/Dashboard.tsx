@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { enroll, unenroll } from "./enrollmentsReducer";
 
@@ -19,7 +19,6 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
     (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === courseId
   );
 
-  console.log("enrollments:", enrollments);
   const coursesToDisplay = showAllCourses ? courses : courses.filter((course) => isEnrolled(course._id));
   console.log("coursesToDisplay:", coursesToDisplay);
 

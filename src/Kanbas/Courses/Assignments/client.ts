@@ -6,7 +6,6 @@ export const deleteAssignment = async (assignmentId: string) => {
     return response.data;
 };
 export const updateAssignment = async (assignment: any) => {
-    console.log("Updating assignment: (frontend)", assignment);
     const { data } = await axios.put(`${ASSIGNMENTS_API}/${assignment._id}`, assignment);
     return data;
   };
