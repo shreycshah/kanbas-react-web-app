@@ -13,6 +13,9 @@ export default function AccountNavigation() {
         className={`list-group-item border border-0 ${pathname.includes("Signup") ? "active" : "text-danger"}`}>Signup</Link>
       <Link id="wd-account-profile-link" to={`/Kanbas/Account/Profile`}
         className={`list-group-item border border-0 ${pathname.includes("Profile") ? "active" : "text-danger"}`}>Profile</Link>
+      {currentUser && currentUser.role === "ADMIN" && (
+        <Link id="wd-account-users-link" to={`/Kanbas/Account/Users`}
+          className={`list-group-item border border-0 ${pathname.includes("Users") ? "active" : "text-danger"}`}> Users </Link>)}
     </div>
   );
 }
