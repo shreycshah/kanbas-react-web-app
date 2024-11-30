@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { enroll, unenroll } from "./enrollmentsReducer";
-import * as courseClient from "./Courses/client";
+import * as userClient from "./Account/client";
 
 export default function Dashboard({ courses, course, allCourses, setCourse, addNewCourse,
   deleteCourse, updateCourse, fetchCourses, fetchAllCourses }: {
@@ -27,12 +27,12 @@ export default function Dashboard({ courses, course, allCourses, setCourse, addN
   }, [courses, showAllCourses]);
 
   const unenrollStudent = async (course: any) => {
-    await courseClient.unenrollStudentForCourse(course._id);
+    await userClient.unenrollFromCourse(currentUser._id, course._id);
     await fetchCourses();
     await fetchAllCourses();
   };
   const enrollStudent = async (course: any) => {
-    await courseClient.enrollStudentForCourse(course._id);
+    await userClient.enrollIntoCourse(currentUser._id,course._id);
     await fetchCourses();
     await fetchAllCourses();
   };

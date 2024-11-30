@@ -40,21 +40,26 @@ export const createAssignmentForCourse = async (courseId: string, assignment: an
     );
     return response.data;
 };
-export const enrollStudentForCourse = async (courseId: string) => {
-    const response = await axiosWithCredentials.post(
-        `${ENROLLMENT_API}/${courseId}`
-    );
-    return response.data;
-}
-export const unenrollStudentForCourse = async (courseId: string) => {
-    const response = await axiosWithCredentials.delete(
-        `${ENROLLMENT_API}/${courseId}`
-    );
-    return response.data;
-}
+// export const enrollStudentForCourse = async (courseId: string) => {
+//     const response = await axiosWithCredentials.post(
+//         `${ENROLLMENT_API}/${courseId}`
+//     );
+//     return response.data;
+// }
+// export const unenrollStudentForCourse = async (courseId: string) => {
+//     const response = await axiosWithCredentials.delete(
+//         `${ENROLLMENT_API}/${courseId}`
+//     );
+//     return response.data;
+// }
 export const createCourse = async (course: any) => {
     const { data } = await axiosWithCredentials.post(COURSES_API, course);
     return data;
 };
+export const findUsersForCourse = async (courseId: string) => {
+    const response = await axios.get(`${COURSES_API}/${courseId}/users`);
+    return response.data;
+};
+
 
 

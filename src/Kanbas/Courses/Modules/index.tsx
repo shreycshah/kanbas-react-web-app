@@ -33,6 +33,7 @@ export default function Modules() {
     if (!cid) return;
     const newModule = { name: moduleName, course: cid };
     const module = await coursesClient.createModuleForCourse(cid, newModule);
+    console.log("Module created", module);
     dispatch(addModule(module));
   };
 
@@ -61,7 +62,7 @@ export default function Modules() {
                   }}
                   defaultValue={module.name} />
               )} <ModuleControlButtons moduleId={module._id}
-                deleteModule={(moduleId) => removeModule(module._id)}
+                deleteModule={() => removeModule(module._id)}
                 editModule={(moduleId) => dispatch(editModule(moduleId))} />
             </div>
             {module.lessons && (
