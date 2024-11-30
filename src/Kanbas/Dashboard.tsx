@@ -21,8 +21,7 @@ export default function Dashboard({ courses, course, allCourses, setCourse, addN
   );
 
   const [coursesToDisplay, setCoursesToDisplay] = useState<any[]>([]);
-
-  console.log("coursesToDisplay:", coursesToDisplay);
+  
   useEffect(() => {
     setCoursesToDisplay(showAllCourses ? allCourses : courses);
   }, [courses, showAllCourses]);

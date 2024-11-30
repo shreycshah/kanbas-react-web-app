@@ -16,7 +16,7 @@ export default function Modules() {
   const dispatch = useDispatch();
 
   const removeModule = async (moduleId: string) => {
-    console.log("Removing module frontend:", moduleId);
+    console.log("Removing module in index.tsx", moduleId);
     await modulesClient.deleteModule(moduleId);
     dispatch(deleteModule(moduleId));
   };
@@ -33,7 +33,6 @@ export default function Modules() {
     if (!cid) return;
     const newModule = { name: moduleName, course: cid };
     const module = await coursesClient.createModuleForCourse(cid, newModule);
-    console.log("Module created with ID:", module._id);
     dispatch(addModule(module));
   };
 
@@ -62,7 +61,7 @@ export default function Modules() {
                   }}
                   defaultValue={module.name} />
               )} <ModuleControlButtons moduleId={module._id}
-                deleteModule={() => removeModule(module._id)}
+                deleteModule={(moduleId) => removeModule(module._id)}
                 editModule={(moduleId) => dispatch(editModule(moduleId))} />
             </div>
             {module.lessons && (

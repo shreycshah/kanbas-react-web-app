@@ -42,10 +42,8 @@ export default function Kanbas() {
   }, [currentUser]);
 
   const addNewCourse = async () => {
-    console.log("index.js addNewCourse:", courses);
-    const newCourse = await userClient.createCourse(course);
+    const newCourse = await courseClient.createCourse(course);
     setCourses((courses) => [...courses, newCourse]);
-    console.log("courses after adding:", courses);
   };
   const deleteCourse = async (courseId: any) => {
     const status = await courseClient.deleteCourse(courseId);
